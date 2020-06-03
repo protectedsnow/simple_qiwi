@@ -7,7 +7,7 @@ pip install simple-qiwi
 ## Использование
 ### Получение баланса
 ```python
-from simple-qiwi import *
+from simple_qiwi import *
 
 token = "ВАШ ТОКЕН"         # https://qiwi.com/api
 phone = "ВАШ ТЕЛЕФОН"
@@ -20,7 +20,7 @@ print(api.balance)
 ```
 ### Переводим деньги на счета QIWI
 ```python
-from simple-qiwi import *
+from simple_qiwi import *
 
 token = "ВАШ ТОКЕН"         # https://qiwi.com/api
 phone = "ВАШ ТЕЛЕФОН"
@@ -35,7 +35,7 @@ print(api.balance)
 ```
 ### Получаем входящие платежи
 ```python
-from simple-qiwi import *
+from simple_qiwi import *
 
 token = "ВАШ ТОКЕН"         # https://qiwi.com/api
 phone = "ВАШ ТЕЛЕФОН"
@@ -46,7 +46,7 @@ print(api.payments)
 ```
 ### Принемаем платежи
 ```python
-from simple-qiwi import *
+from simple_qiwi import *
 from time import sleep
 
 token = "ВАШ ТОКЕН"         # https://qiwi.com/api
@@ -72,7 +72,7 @@ api.stop()                  # Останавливаем прием платеж
 ```
 ### Эхо
 ```python
-from simple-qiwi import *
+from simple_qiwi import *
 from time import sleep
 
 token = "ВАШ ТОКЕН"         # https://qiwi.com/api
@@ -94,4 +94,23 @@ def foo(bar):
     api.stop()
 
 api.start()
+```
+
+### Вебхуки
+```python
+from simple_qiwi import *
+from time import sleep
+
+token = "ВАШ ТОКЕН"         # https://qiwi.com/api
+phone = "ВАШ ТЕЛЕФОН"
+
+api = QApi(token=token, phone=phone)
+
+@api.bind_echo()            # Создаем эхо-функцию.  Она будет вызываться при каждом новом полученном платеже. В качестве аргументов ей
+                            # передаётся информация о платеже. 
+def foo(bar):
+    print("New payment!")
+    print(bar)
+
+api.start_webhook()
 ```
