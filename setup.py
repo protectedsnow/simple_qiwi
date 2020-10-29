@@ -8,6 +8,6 @@ setup(
     description='QIWI API for Humans',
     long_description='See https://github.com/protectedsnow/simple_qiwi',
     url='https://github.com/protectedsnow/simple_qiwi',
-    install_requires=['requests', 'uuid'],
+    install_requires=['requests', 'uuid', 'flask'],
     packages=['simple_qiwi']
 )
